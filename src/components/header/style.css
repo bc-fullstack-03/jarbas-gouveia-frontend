@@ -115,6 +115,11 @@ aside nav {
     visibility: collapse;
   }
 
+  a {
+    padding-top: 0.4rem;
+    display: grid;
+  }
+
   .mobile-header {
     position: fixed;
     width: 100%;
@@ -179,6 +184,7 @@ aside nav {
     padding: 0.6em;
     text-align: center;
     transition: ease 0.4s;
+    width: 100%;
   }
 
   .foot-links > li > a > span {
@@ -191,7 +197,7 @@ aside nav {
     color: inherit;
   }
 
-  .foot-links fa-icon {
+  .foot-links i {
     position: relative;
     font-size: 25px;
   }
