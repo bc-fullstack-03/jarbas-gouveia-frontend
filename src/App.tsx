@@ -1,10 +1,15 @@
 import './App.css'
+import Header from './components/header/Header'
 import FeedView from './views/Feed/FeedView'
 
 function App() {
 
   return (
-    <FeedView />
+    <>
+    <Header />
+    <main className='container'>
+      <FeedView />
+    </main></>
   )
 }
 

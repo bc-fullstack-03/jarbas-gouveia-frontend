@@ -1,0 +1,200 @@
+aside {
+  float: left;
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 180px;
+  height: 100vh;
+  padding: 1em 0 0 0;
+  border-right: 1px solid #777;
+  transition: all 0.4s;
+}
+
+aside nav {
+  margin: auto;
+  flex: 1 1 auto;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.brand,
+.links {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.brand img {
+  width: 40px;
+}
+
+.brand h2 {
+  transition: 0.4s;
+}
+
+.brand:hover > h2 {
+  color: #dec129;
+}
+
+.links {
+  margin-left: 0;
+}
+
+.links li {
+  margin-right: auto;
+  list-style: none;
+  padding: 0.5em;
+  width: 100%;
+}
+.links a {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 24px;
+  width: 100%;
+  padding: 0.3em 1em;
+  transition: 0.4s;
+  font-size: 17px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.links a:hover {
+  background-color: #efefef;
+  color: inherit;
+}
+
+.links fa-icon {
+  padding-right: 0.5em;
+  position: relative;
+  font-size: 20px;
+}
+
+#add a > span {
+  color: #dec129;
+}
+
+@media (width > 396px) {
+  .footer-bar {
+    visibility: collapse;
+    opacity: 0;
+  }
+
+  .mobile-header {
+    visibility: collapse;
+    opacity: 0;
+  }
+}
+
+@media (width < 920px) {
+  aside {
+    width: 72px;
+  }
+
+  .brand h2 {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .links {
+    width: 100%;
+  }
+
+  .links a > span {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@media (width < 397px) {
+  .brand {
+    opacity: 0;
+    visibility: collapse;
+  }
+
+  .mobile-header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    height: 50px;
+    z-index: 1;
+    background-color: whitesmoke;
+    border-bottom: 1px solid #dec129;
+    transition: ease-in 0.3s;
+  }
+
+  .mobile-header img {
+    width: 40px;
+    height: auto;
+    transition: transform 1s;
+  }
+
+  .mobile-header img:hover {
+    transform: scale(1.1);
+  }
+
+  .brand-mobile {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.2em 1em;
+  }
+
+  .brand-mobile h2 {
+    transition: 0.4s;
+  }
+
+  .brand-mobile > h2:hover {
+    color: #dec129;
+  }
+
+  aside {
+    opacity: 0;
+    visibility: collapse;
+  }
+
+  .footer-bar {
+    border-top: 1px solid #dec129;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    z-index: 1;
+    background-color: whitesmoke;
+    width: 100%;
+    height: 60px;
+    transition: ease-in 0.3s;
+  }
+
+  .foot-links {
+    display: flex;
+    width: 100%;
+  }
+
+  .foot-links li {
+    list-style: none;
+    padding: 0.6em 2em;
+    text-align: center;
+    transition: ease 0.4s;
+  }
+
+  .foot-links > li > a > span {
+    opacity: 0;
+    visibility: collapse;
+  }
+
+  .foot-links li:hover {
+    background-color: #f4e6a2;
+    color: inherit;
+  }
+
+  .foot-links fa-icon {
+    position: relative;
+    font-size: 25px;
+  }
+}
