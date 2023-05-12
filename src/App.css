@@ -15,6 +15,7 @@
 @media (width > 397px) {
   .container {
     transition: padding 0.4s;
+    margin-top: -240px;
   }
 }
 

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import logo from "../../assets/moments.png";
 import "./style.css";
 
@@ -14,28 +15,36 @@ function Header() {
         <nav>
           <ul className="links">
             <li>
-              <a href="#">
+              <Link to="/">
+              <div className="header-button-wrapper">
                 <i className="fa-solid fa-house" />
                 <span>Home</span>
-              </a>
+              </div>
+              </Link>
             </li>
             <li>
-              <a href="#">
+              <Link to="/" id="add">
+              <div className="header-button-wrapper">
                 <i className="fa-solid fa-champagne-glasses" />
                 <span>Postar</span>
-              </a>
+              </div>
+              </Link>
             </li>
             <li>
-              <a href="#">
+              <Link to="/">
+              <div className="header-button-wrapper">
                 <i className="fa-solid fa-user"></i>
                 <span>Perfil</span>
-              </a>
+              </div>
+              </Link>
             </li>
             <li>
-              <a href="#">
+              <Link to="/">
+                <div className="header-button-wrapper">
                 <i className="fa-solid fa-user-group"></i>
                 <span>Seguidores</span>
-              </a>
+                </div>
+              </Link>
             </li>
           </ul>
         </nav>
@@ -48,28 +57,24 @@ function Header() {
       </div>
       <nav className="footer-bar">
         <ul className="foot-links">
-          <li>
+        <li>
             <a href="#">
-              <i className="fa-solid fa-house" />
-              <span>Home</span>
+              <i className="fa-solid fa-house"></i>
             </a>
           </li>
           <li>
             <a href="#">
-              <i className="fa-solid fa-champagne-glasses" />
-              <span>Postar</span>
+              <i className="fa-solid fa-champagne-glasses"></i>
             </a>
           </li>
           <li>
             <a href="#">
               <i className="fa-solid fa-user"></i>
-              <span>Perfil</span>
             </a>
           </li>
           <li>
             <a href="#">
               <i className="fa-solid fa-user-group"></i>
-              <span>Seguidores</span>
             </a>
           </li>
         </ul>
