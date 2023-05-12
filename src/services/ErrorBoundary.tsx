@@ -3,7 +3,6 @@ import ErrorPage from "../views/Error/ErrorView";
 
 function ErrorBoundary () {
     const error = useRouteError();
-
     return <ErrorPage error={error} />;
   }
 
