@@ -28,3 +28,7 @@
   width: 100%;
   text-align: center;
 }
+
+.feed-container {
+  padding-top: 1.5em;
+}

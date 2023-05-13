@@ -1,0 +1,144 @@
+.login-container {
+  color: #121212;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f4f4df;
+}
+
+.login-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: #efefef;
+  width: 60%;
+  height: 80%;
+}
+
+.login-slogan {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+  height: 100%;
+  padding: 1rem;
+}
+
+.login-form-wrapper {
+  margin-left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 420px;
+  border: 1px solid #77777759;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.login-form-wrapper img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 2em;
+  transition: all 0.4s;
+}
+
+.login-form-wrapper img:hover {
+  transform: perspective(200px) rotateY(-15deg);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 0.5em;
+  margin-bottom: 1em;
+}
+
+.login-form input[type="submit"] {
+  background-color: #dec129;
+  border: none;
+  border-radius: 5px;
+  color: #000000;
+  padding: 0.5em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+
+.login-form input[type="submit"]:hover {
+  background-color: #000000;
+  color: #dec129;
+}
+
+.login-form input::placeholder {
+  color: #efefef;
+}
+
+.login-slogan h1 {
+  color: #dec129;
+  font-weight: 400;
+}
+
+.login-slogan h3 {
+  font-weight: 400;
+  margin-top: 1em;
+}
+
+.login-slogan p {
+  font-size: 0.9em;
+  font-weight: 400;
+  margin-top: 1em;
+  text-align: justify;
+}
+
+.login-slogan span {
+  font-weight: 400;
+  background-color: #000000a7;
+  color: #dec129;
+  border-radius: 2px;
+  padding: 0.1rem;
+}
+
+.register-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  margin-top: 1rem;
+  padding: 0.5em;
+  border: 1px solid #77777759;
+}
+
+.register-wrapper h1 {
+  color: #dec129;
+}
+
+.login-footer {
+  position: absolute;
+  bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  margin-top: 1rem;
+}
+
+.login-footer p {
+  font-size: 0.8em;
+  font-weight: 400;
+  text-align: justify;
+}

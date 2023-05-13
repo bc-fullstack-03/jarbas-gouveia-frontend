@@ -25,8 +25,9 @@ export default function MomentCard({
       <p>{user}</p>
       <p className="date">Em: {date}</p>
       <div className="interact-container">
-        <div>❤️: {likes.length}</div>
-        <div>🗣️: {comments.length}</div>
+        <div><i className="fa-solid fa-heart"></i> : {likes.length}</div>
+        <div><i className="fa-solid fa-comment"></i>: {comments.length}</div>
+        <div><i className="fa-solid fa-share"></i></div>
       </div>
 
       <p>

@@ -27,7 +27,14 @@ export default function FeedView() {
         <div className="moments-container">
             {
               feed.length ? (feed.map(({id, title, description, username ,date, imageUrl, likes, comments}) => (
-                <MomentCard key={id} title={title} description={description} user={username} date={date} imageUrl={imageUrl} likes={likes} comments={comments} />
+                <MomentCard
+                key={id}
+                title={title}
+                description={description}
+                user={username} date={date}
+                imageUrl={imageUrl}
+                likes={likes}
+                comments={comments} />
               ))) : (<p>Carregando...</p>)
             }
         </div>
