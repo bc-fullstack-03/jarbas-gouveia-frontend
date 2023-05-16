@@ -15,7 +15,7 @@ export default function LoginView() {
 
 
 
-  const onSubmit = (data: { email: string; password: string }) => {
+  const onSubmit = (data: any) => {
 
     const t = async () => login(data.email, data.password);
 

@@ -56,7 +56,7 @@ export default function MomentCard({
         </div>
       </div>
       <h2>{title}</h2>
-      <img src={imageUrl} alt={title} />
+      <img src={imageUrl} alt={title} className="moment-card-image" />
       <p>{description}</p>
       <div className="interact-container">
         <div>

@@ -87,6 +87,15 @@
   font-weight: 400;
 }
 
+.moment-card-image {
+  border: 1px solid red;
+  min-width: 400px;
+  min-height: 400px;
+  max-width: 400px;
+  max-height: 400px;
+  object-fit: cover;
+}
+
 .interact-container {
   display: flex;
   justify-content: space-around;
