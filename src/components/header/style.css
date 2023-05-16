@@ -20,6 +20,22 @@ aside nav {
   height: 100vh;
 }
 
+.header-profile-pic-container {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0.5em 0;
+}
+
+.header-profile-pic {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+
 .brand,
 .links {
   display: flex;
@@ -41,6 +57,7 @@ aside nav {
 }
 
 .links {
+  margin-top: -4rem;
   margin-left: 0;
 }
 

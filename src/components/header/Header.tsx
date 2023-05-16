@@ -1,8 +1,26 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/moments.png";
+import profileLogo from "../../assets/profile-thumb.png";
+import { getProfileByUserId } from "../../services/profile.service";
 import "./style.css";
 
 function Header() {
+
+
+  const [profile, setProfile] = useState({} as any);
+  const token = JSON.parse(localStorage.getItem("token") || "");
+
+
+  useEffect(() => {
+    const t = async () => getProfileByUserId(token.token, token.userId);
+    t().then((res) => {
+      setProfile(res);
+    });
+  }, [token.token, token.userId])
+
+
+
   return (
     <>
       <aside>
@@ -12,6 +30,10 @@ function Header() {
             <h2>Moments</h2>
           </a>
         </header>
+        <div className="header-profile-pic-container">
+          <img src={profile.profilePicture || profileLogo} alt="" className="header-profile-pic"/>
+          <p>{profile.username}</p>
+        </div>
         <nav>
           <ul className="links">
             <li>

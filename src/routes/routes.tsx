@@ -10,10 +10,8 @@ const router = createBrowserRouter([
         element: <App />,
         errorElement: <ErrorBoundary />,
         children: [
-            {
-                path: "/",
-                element: <FeedView />,
-            },
+            { path: '/', element: <LoginView /> },
+            { path: "/feed", element: <FeedView />},
 
         ],
     },

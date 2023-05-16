@@ -1,5 +1,7 @@
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import logo from "../../assets/moments.png";
+import { login } from "../../services/authentication.service";
 import "./style.css";
 
 export default function LoginView() {
@@ -9,7 +11,25 @@ export default function LoginView() {
     handleSubmit,
   } = useForm();
 
-  const onSubmit = (data: any) => console.log(data);
+  const redirect = useNavigate();
+
+
+
+  const onSubmit = (data: { email: string; password: string }) => {
+
+    const t = async () => login(data.email, data.password);
+
+    t().then((res) => {
+      localStorage.setItem("token", JSON.stringify(res));
+      return redirect("/feed");
+    });
+
+
+
+    localStorage.setItem("token", JSON.stringify(data));
+    return redirect("/feed");
+  };
+
   return (
     <div className="login-container">
       <div className="login-wrapper">
@@ -27,20 +47,36 @@ export default function LoginView() {
           <img src={logo} alt="Moments Logo" />
           <form onSubmit={handleSubmit(onSubmit)} className="login-form">
             <input
+              onError={(e) => console.log(e)}
               placeholder="Seu email"
-              {...register("firstName", { required: true })}
+              {...register("email", {
+                required: {
+                  value: true,
+                  message: "O email é obrigatório",
+                },
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: "Email inválido",
+                },
+              })}
               aria-invalid={errors.firstName ? "true" : "false"}
             />
-            {errors.firstName?.type === "required" && (
-              <p role="alert">First name is required</p>
-            )}
+            {errors.email && errors.email.message}
 
             <input
               placeholder="Sua senha"
-              {...register("mail", { required: "Email Address is required" })}
+              {...register("password", {
+                required: true,
+                minLength: 6,
+              })}
               aria-invalid={errors.mail ? "true" : "false"}
             />
-            {errors.mail && <p role="alert">{errors.mail?.message}</p>}
+            {errors.password?.type === "required" && (
+              <p>A senha é obrigatória</p>
+            )}
+            {errors.password?.type === "minLength" && (
+              <p>A senha deve ter no mínimo 6 caracteres</p>
+            )}
             <input type="submit" value="Apreciar" />
           </form>
 

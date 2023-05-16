@@ -126,6 +126,18 @@
   color: #dec129;
 }
 
+.register-wrapper a {
+  color: #000000;
+  font-size: 1em;
+  font-weight: 700;
+  text-align: justify;
+  transition: all 0.2s;
+}
+
+.register-wrapper a:hover {
+  color: #dec129;
+}
+
 .login-footer {
   position: absolute;
   bottom: 1rem;
