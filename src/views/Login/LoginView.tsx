@@ -1,29 +1,28 @@
-import { useForm } from "react-hook-form";
+import React from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/moments.png";
 import { login } from "../../services/authentication.service";
+import { LoginData } from "../../types/LoginData";
 import "./style.css";
 
-export default function LoginView() {
+const LoginView: React.FC = () => {
   const {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm();
+  } = useForm<LoginData>();
 
   const redirect = useNavigate();
 
-
-
-  const onSubmit = (data: any) => {
-
-    const t = async () => login(data.email, data.password);
-
-    t().then((res) => {
+  const onSubmit: SubmitHandler<LoginData> = async (data) => {
+    try {
+      const res = await login(data.email, data.password);
       localStorage.setItem("token", JSON.stringify(res));
-      return redirect("/");
-    });
-
+      redirect("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -43,36 +42,30 @@ export default function LoginView() {
           <img src={logo} alt="Moments Logo" />
           <form onSubmit={handleSubmit(onSubmit)} className="login-form">
             <input
-              onError={(e) => console.log(e)}
               placeholder="Seu email"
               {...register("email", {
-                required: {
-                  value: true,
-                  message: "O email é obrigatório",
-                },
+                required: "O email é obrigatório",
                 pattern: {
                   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                   message: "Email inválido",
                 },
               })}
-              aria-invalid={errors.firstName ? "true" : "false"}
+              aria-invalid={errors.email ? "true" : "false"}
             />
-            {errors.email && errors.email.message}
+            {errors.email && <p>{errors.email.message}</p>}
 
             <input
               placeholder="Sua senha"
               {...register("password", {
-                required: true,
-                minLength: 6,
+                required: "A senha é obrigatória",
+                minLength: {
+                  value: 6,
+                  message: "A senha deve ter no mínimo 6 caracteres",
+                },
               })}
-              aria-invalid={errors.mail ? "true" : "false"}
+              aria-invalid={errors.password ? "true" : "false"}
             />
-            {errors.password?.type === "required" && (
-              <p>A senha é obrigatória</p>
-            )}
-            {errors.password?.type === "minLength" && (
-              <p>A senha deve ter no mínimo 6 caracteres</p>
-            )}
+            {errors.password && <p>{errors.password.message}</p>}
             <input type="submit" value="Apreciar" />
           </form>
 
@@ -87,4 +80,6 @@ export default function LoginView() {
       </div>
     </div>
   );
-}
+};
+
+export default LoginView;
