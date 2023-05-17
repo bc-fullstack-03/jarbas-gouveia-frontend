@@ -45,7 +45,7 @@ function Header() {
               </Link>
             </li>
             <li>
-              <Link to="/" id="add">
+              <Link to="/new-moment" id="add">
               <div className="header-button-wrapper">
                 <i className="fa-solid fa-champagne-glasses" />
                 <span>Postar</span>

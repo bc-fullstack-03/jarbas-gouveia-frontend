@@ -13,15 +13,15 @@
 .moment {
   border: 1px solid #e6e6e6;
   border-radius: 5px;
-  width: 400px;
+  width: 402px;
   height: 600px;
   margin-bottom: 1em;
   text-align: center;
 }
 
 .moment img {
-  width: 100%;
   margin-bottom: 1em;
+  width: 400px;
   max-height: 400px;
 }
 
@@ -88,7 +88,6 @@
 }
 
 .moment-card-image {
-  border: 1px solid red;
   min-width: 400px;
   min-height: 400px;
   max-width: 400px;
@@ -100,4 +99,10 @@
   display: flex;
   justify-content: space-around;
   margin-top: 1em;
+}
+
+.interact-container button {
+  border: none;
+  background: none;
+  cursor: pointer;
 }

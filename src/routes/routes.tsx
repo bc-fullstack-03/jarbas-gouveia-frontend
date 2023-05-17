@@ -3,6 +3,8 @@ import App from "../App";
 import ErrorBoundary from "../services/ErrorBoundary";
 import FeedView from "../views/Feed/FeedView";
 import LoginView from "../views/Login/LoginView";
+import MomentDetailsView from "../views/MomentDetails/MomentDetailsView";
+import NewMoment from "../views/NewMoment";
 
 const router = createBrowserRouter([
     {
@@ -10,9 +12,9 @@ const router = createBrowserRouter([
         element: <App />,
         errorElement: <ErrorBoundary />,
         children: [
-            { path: '/', element: <LoginView /> },
-            { path: "/feed", element: <FeedView />},
-
+            { path: "/", element: <FeedView />},
+            { path: "/moment/:id", element: <MomentDetailsView /> },
+            { path:"/new-moment", element: <NewMoment />},
         ],
     },
     {

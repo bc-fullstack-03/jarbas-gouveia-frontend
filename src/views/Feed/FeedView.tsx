@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Header from '../../components/header/Header';
+import { useNavigate } from 'react-router-dom';
 import MomentCard from '../../components/momentCard/MomentCard';
 import { getFeed } from '../../services/feed.service';
 import './style.css';
@@ -7,19 +7,25 @@ import './style.css';
 
 export default function FeedView() {
   const [feed, setFeed] = useState([]);
+  const navigate = useNavigate();
+
 
   const token = JSON.parse(localStorage.getItem('token') || '');
 
-  const t = async () => getFeed(token.token, 1, 4);
 
   useEffect(() => {
+    const t = async () => getFeed(token.token, 1, 4);
     t().then((res) => {
-      setFeed(res);
+      if (res.status === 200) {
+        setFeed(res.data);
+      } else {
+        navigate('/login');
+      }
+
     });
-  }, [t, token.token]);
+  }, [navigate, token.token]);
 
   return (
-    <><Header /><main className='container'>
       <div className="home-container">
         <h1>Veja o que estão compartilhando 💛</h1>
         <div className="search-container">
@@ -31,6 +37,7 @@ export default function FeedView() {
               {feed.length ? (feed.map(({ id, title, description, username, date, imageUrl, likes, comments }) => (
                 <MomentCard
                   key={id}
+                  id={id}
                   title={title}
                   description={description}
                   user={username} date={date}
@@ -42,6 +49,5 @@ export default function FeedView() {
           </div>
         </div>
       </div>
-    </main></>
   )
 }

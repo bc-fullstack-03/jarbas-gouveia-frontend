@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getProfile } from "../../services/profile.service";
 import "./style.css";
 
 export default function MomentCard({
+  id,
   title,
   description,
   user,
@@ -11,6 +13,7 @@ export default function MomentCard({
   likes,
   comments,
 }: {
+  id: string;
   title: string;
   description: string;
   user: string;
@@ -20,6 +23,7 @@ export default function MomentCard({
   comments: any;
 }) {
   interface ProfileInfo {
+    likes: any;
     id: number;
     username: string;
     profilePicture: string;
@@ -35,7 +39,7 @@ export default function MomentCard({
 
   const dataFormatada = `${dia}/${mes}/${ano}`;
 
-  const token = JSON.parse(localStorage.getItem('token') || '');
+  const token = JSON.parse(localStorage.getItem("token") || "");
 
   useEffect(() => {
     const getInfo = async () => getProfile(token.token, user);
@@ -43,6 +47,16 @@ export default function MomentCard({
       setProfileInfo(res);
     });
   }, [token.token, user]);
+
+  let likeNumber = likes.length || 0;
+
+  const like = () => {
+    likeNumber++;
+    console.log(likeNumber);
+  }
+
+
+
 
   return (
     <div className="moment">
@@ -60,10 +74,14 @@ export default function MomentCard({
       <p>{description}</p>
       <div className="interact-container">
         <div>
-          <i className="fa-solid fa-heart"></i> : {likes.length}
+          <button onClick={like}>
+            <i className="fa-solid fa-heart"></i> : {likeNumber}
+          </button>
         </div>
         <div>
-          <i className="fa-solid fa-comment"></i>: {comments.length}
+          <button>
+            <i className="fa-solid fa-comment"></i>: {comments.length}
+          </button>
         </div>
         <div>
           <i className="fa-solid fa-share"></i>
@@ -71,7 +89,7 @@ export default function MomentCard({
       </div>
 
       <p>
-        <a href="#linkdomoment">Detalhes</a>
+        <Link to={`moment/${id}`}>Detalhes</Link>
       </p>
     </div>
   );

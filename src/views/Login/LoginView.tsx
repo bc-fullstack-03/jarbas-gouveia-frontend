@@ -21,13 +21,9 @@ export default function LoginView() {
 
     t().then((res) => {
       localStorage.setItem("token", JSON.stringify(res));
-      return redirect("/feed");
+      return redirect("/");
     });
 
-
-
-    localStorage.setItem("token", JSON.stringify(data));
-    return redirect("/feed");
   };
 
   return (
