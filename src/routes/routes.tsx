@@ -1,10 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
+import FeedView from "../pages/Feed/FeedView";
+import LoginView from "../pages/Login/LoginView";
+import MomentDetailsView from "../pages/MomentDetails/MomentDetailsView";
+import NewMoment from "../pages/NewMoment";
 import ErrorBoundary from "../services/ErrorBoundary";
-import FeedView from "../views/Feed/FeedView";
-import LoginView from "../views/Login/LoginView";
-import MomentDetailsView from "../views/MomentDetails/MomentDetailsView";
-import NewMoment from "../views/NewMoment";
 
 const router = createBrowserRouter([
     {

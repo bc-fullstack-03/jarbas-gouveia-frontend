@@ -1,6 +1,6 @@
 .container {
   min-height: 100vh;
-  margin-left: 180px; /* Área destinada ao conteudo do site */
+  margin-left: 180px;
   overflow: hidden;
   transition: all 0.4s;
 }
@@ -23,6 +23,6 @@
   .container {
     transition: padding 0.4s;
     padding-top: 40px;
-    margin-left: unset; /* Área destinada ao conteudo do site */
+    margin-left: unset;
   }
 }

@@ -1,24 +1,16 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Moment } from "../../interfaces/IMoment";
+import { Profile } from "../../interfaces/IProfile";
 import { getMomentById } from "../../services/moment.service";
 import { getProfileByUserId } from "../../services/profile.service";
 import "./style.css";
 
-interface Moment {
-  id: string;
-  userId: string;
-  title: string;
-  description: string;
-  username: string;
-  date: string;
-  imageUrl: string;
-  likes: [];
-  comments: [];
-}
+
 
 export default function MomentDetailsView() {
   const [moment, setMoment] = useState({} as Moment);
-  const [profileInfo, setProfileInfo] = useState({} as any);
+  const [profileInfo, setProfileInfo] = useState({} as Profile);
 
   const { id } = useParams();
   const { token, userId } = JSON.parse(localStorage.getItem("token") || "");

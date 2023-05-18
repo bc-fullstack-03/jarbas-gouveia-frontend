@@ -20,7 +20,7 @@ export async function getProfile(token: string, user: string) {
 export async function getProfileByUserId(token: string, userId: string) {
 
     try {
-        const { data } = await axiosHandler.get(`/profile/userId/${userId}`, {
+        const { data, status } = await axiosHandler.get(`/profile/userId/${userId}`, {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
@@ -28,7 +28,10 @@ export async function getProfileByUserId(token: string, userId: string) {
             },
         })
 
-        return data;
+        return {
+            data,
+            status
+        };
 
     } catch (error) {
         return error;

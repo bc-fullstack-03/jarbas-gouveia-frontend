@@ -8,8 +8,8 @@ aside {
   width: 180px;
   height: 100vh;
   padding: 1em 0 0 0;
-  border-right: 1px solid #777;
   transition: all 0.4s;
+  border-right: 1px solid #777;
 }
 
 aside nav {
@@ -28,6 +28,10 @@ aside nav {
   align-items: center;
   width: 100%;
   padding: 0.5em 0;
+}
+
+.header-profile-pic-container p {
+  margin-top: 0.5em;
 }
 
 .header-profile-pic {
@@ -88,6 +92,11 @@ aside nav {
   padding-right: 0.5em;
   position: relative;
   font-size: 20px;
+}
+
+.links span {
+  color: #777;
+  transition: 0.4s;
 }
 
 #add .header-button-wrapper span {

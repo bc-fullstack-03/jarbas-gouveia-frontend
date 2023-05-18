@@ -1,29 +1,31 @@
+import { AxiosResponse } from 'axios';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import MomentCard from '../../components/momentCard/MomentCard';
+import { Moment } from '../../interfaces/IMoment';
+import { ResponseFormat } from '../../interfaces/ResponseFormat';
 import { getFeed } from '../../services/feed.service';
 import './style.css';
 
 
 export default function FeedView() {
-  const [feed, setFeed] = useState([]);
-  const navigate = useNavigate();
+  const [feed, setFeed] = useState([] as Moment[]);
 
-
-  const token = JSON.parse(localStorage.getItem('token') || '');
+  const { token } = JSON.parse(localStorage.getItem('token') || '');
 
 
   useEffect(() => {
-    const t = async () => getFeed(token.token, 1, 4);
-    t().then((res) => {
-      if (res.status === 200) {
-        setFeed(res.data);
-      } else {
-        navigate('/login');
+    const fetchFeed = async () => {
+      try {
+        const response = await getFeed(token, 1, 4);
+        const responseFormat = response as AxiosResponse<ResponseFormat<Moment[]>>;
+        setFeed(responseFormat.data as unknown as Moment[]);
       }
-
-    });
-  }, [navigate, token.token]);
+      catch (err) {
+        console.log(err);
+      }
+    };
+    fetchFeed();
+  }, [token]);
 
   return (
       <div className="home-container">
