@@ -1,21 +1,18 @@
 import { AxiosResponse } from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/moments.png";
 import profileLogo from "../../assets/profile-thumb.png";
+import { ProfileContext } from "../../context/profile/profile.context";
 import { Profile } from "../../interfaces/IProfile";
 import { ResponseFormat } from "../../interfaces/ResponseFormat";
 import { getProfileByUserId } from "../../services/profile.service";
 import "./style.css";
 
-
-
-
-
 function Header() {
-  const [profile, setProfile] = useState<Profile>({} as Profile);
   const token = JSON.parse(localStorage.getItem("token") || "");
   const navigate = useNavigate();
+  const { profile, setContextProfile} = useContext(ProfileContext);
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -23,7 +20,7 @@ function Header() {
         const req = await getProfileByUserId(token.token, token.userId);
         const resData = req as AxiosResponse<ResponseFormat<Profile>>;
         if (resData.status === 200) {
-          setProfile(resData.data as unknown as Profile);
+          setContextProfile(resData.data as unknown as Profile);
         } else {
           navigate("/login");
         }
@@ -33,7 +30,7 @@ function Header() {
     };
 
     fetchProfile();
-  }, [navigate, token.token, token.userId]);
+  }, [navigate, token.token, token.userId, setContextProfile]);
 
   return (
     <>
