@@ -19,6 +19,7 @@ const ProfileProvider: React.FC<ProfileProviderProps> = ({ children }) => {
     setContextProfile: setContextProfile,
   };
 
+
   return (
     <ProfileContext.Provider value={providerValue}>
       {children}

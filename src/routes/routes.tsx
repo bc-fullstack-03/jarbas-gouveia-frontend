@@ -4,6 +4,7 @@ import FeedView from "../pages/Feed/FeedView";
 import LoginView from "../pages/Login/LoginView";
 import MomentDetailsView from "../pages/MomentDetails/MomentDetailsView";
 import NewMoment from "../pages/NewMoment";
+import Profile from "../pages/Profile";
 import ErrorBoundary from "../services/ErrorBoundary";
 
 const router = createBrowserRouter([
@@ -14,7 +15,8 @@ const router = createBrowserRouter([
         children: [
             { path: "/", element: <FeedView />},
             { path: "/moment/:id", element: <MomentDetailsView /> },
-            { path:"/new-moment", element: <NewMoment />},
+            { path: "/new-moment", element: <NewMoment />},
+            { path: "/profile", element: <Profile />}
         ],
     },
     {

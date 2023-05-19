@@ -68,7 +68,7 @@ function Header() {
               </Link>
             </li>
             <li>
-              <Link to="/">
+              <Link to="/profile">
                 <div className="header-button-wrapper">
                   <i className="fa-solid fa-user"></i>
                   <span>Perfil</span>

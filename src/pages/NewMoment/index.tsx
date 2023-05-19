@@ -9,7 +9,11 @@ const MomentForm: React.FC = () => {
 
   const onSubmit: SubmitHandler<MomentFornData> = async (data) => {
     const { token } = JSON.parse(localStorage.getItem("token") || "{}");
-    await createMoment(token, data);
+    const { status } = await createMoment(token, data);
+
+    if(status === 201) {
+      alert("Momento criado com sucesso!");
+    }
   };
 
   const fileInputRef = React.useRef<HTMLInputElement>(null);

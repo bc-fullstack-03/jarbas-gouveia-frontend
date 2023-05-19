@@ -88,6 +88,11 @@ aside nav {
   color: inherit;
 }
 
+#add .header-button-wrapper:hover {
+  background-color: #dec129;
+  color: inherit;
+}
+
 .links i {
   padding-right: 0.5em;
   position: relative;
@@ -101,6 +106,14 @@ aside nav {
 
 #add .header-button-wrapper span {
   color: #dec129;
+}
+
+#add .header-button-wrapper:hover span {
+  color: #000000;
+}
+
+#add .header-button-wrapper:hover i {
+  color: #000000;
 }
 
 @media (width > 396px) {

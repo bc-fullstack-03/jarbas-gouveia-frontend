@@ -106,3 +106,7 @@
   background: none;
   cursor: pointer;
 }
+
+.interact-container i {
+  color: #ffd700;
+}
