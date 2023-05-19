@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { addLike, hasLiked, removeLike } from "../../services/like.service";
 import { getProfile } from "../../services/profile.service";
 import "./style.css";
 
@@ -19,17 +20,21 @@ export default function MomentCard({
   user: string;
   date: string;
   imageUrl: string;
-  likes: any;
-  comments: any;
+  likes: Array<string>;
+  comments: [];
 }) {
   interface ProfileInfo {
-    likes: any;
+    likes: [];
     id: number;
     username: string;
     profilePicture: string;
   }
 
   const [profileInfo, setProfileInfo] = useState([] as unknown as ProfileInfo);
+  const [likeNumber, setLikeNumber] = useState(likes.length);
+
+  console.log(likes);
+
 
   const data = new Date(date);
 
@@ -39,24 +44,29 @@ export default function MomentCard({
 
   const dataFormatada = `${dia}/${mes}/${ano}`;
 
-  const token = JSON.parse(localStorage.getItem("token") || "");
+  const { token } = JSON.parse(localStorage.getItem("token") || "");
 
   useEffect(() => {
-    const getInfo = async () => getProfile(token.token, user);
+    const getInfo = async () => getProfile(token, user);
     getInfo().then((res) => {
       setProfileInfo(res);
     });
-  }, [token.token, user]);
+  }, [token, user]);
 
-  let likeNumber = likes.length || 0;
+  const like = async (): Promise<void> => {
+    const { data, status } = await hasLiked(id);
 
-  const like = () => {
-    likeNumber++;
-    console.log(likeNumber);
+    if (status === 200 && data === false) {
+      await addLike(id);
+      setLikeNumber(likeNumber + 1);
+    }
+
+    if (status === 200 && data === true) {
+      await removeLike(id);
+      setLikeNumber(likeNumber - 1);
+    }
+
   }
-
-
-
 
   return (
     <div className="moment">

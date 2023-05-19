@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { AxiosResponse } from "axios";
 import { useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -30,7 +31,7 @@ function Header() {
     };
 
     fetchProfile();
-  }, [navigate, token.token, token.userId, setContextProfile]);
+  }, []);
 
   return (
     <>
