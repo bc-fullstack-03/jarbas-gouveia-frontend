@@ -31,3 +31,7 @@
 .feed-container {
   padding-top: 1.5em;
 }
+
+li {
+  list-style: none;
+}

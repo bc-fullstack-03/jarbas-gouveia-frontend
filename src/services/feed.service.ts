@@ -1,8 +1,10 @@
+import { Moment } from "../interfaces/IMoment";
+import { ResponseFormat } from "../interfaces/ResponseFormat";
 import axiosHandler from "./axios";
 
-export async function getFeed(token: string, page: number, pageLimit: number) {
+export async function getMomentsFeed(token: string, page: number, pageLimit: number): Promise<ResponseFormat<Moment[]>> {
     try {
-        const { data, status } = await axiosHandler.get(`/feed/${page}/${pageLimit}`, {
+        const { data, status } = await axiosHandler.get(`/feed/page/${page}/pageSize/${pageLimit}`, {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
@@ -14,7 +16,10 @@ export async function getFeed(token: string, page: number, pageLimit: number) {
             status,
         };
     } catch (error) {
-        return error;
+        return {
+            data: [],
+            status: 500,
+        }
     }
 }
 

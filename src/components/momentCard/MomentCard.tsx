@@ -24,7 +24,6 @@ export default function MomentCard({
   likes: Array<string>;
   comments: [];
 }) {
-
   const [profileInfo, setProfileInfo] = useState([] as unknown as ProfileInfo);
   const [likeNumber, setLikeNumber] = useState(likes.length);
 
@@ -57,42 +56,41 @@ export default function MomentCard({
       await removeLike(id);
       setLikeNumber(likeNumber - 1);
     }
-
-  }
+  };
 
   return (
-    <div className="moment">
-      <div className="card-moment-header-container">
-        <div className="card-moment-header-wrapper">
-          <img src={profileInfo.profilePicture} alt={profileInfo.username} />
-          <p>{user}</p>
+      <div className="moment">
+        <div className="card-moment-header-container">
+          <div className="card-moment-header-wrapper">
+            <img src={profileInfo.profilePicture} alt={profileInfo.username} />
+            <p>{user}</p>
+          </div>
+          <div className="card-moment-header-wrapper-text">
+            <p className="date">Em: {dataFormatada}</p>
+          </div>
         </div>
-        <div className="card-moment-header-wrapper-text">
-          <p className="date">Em: {dataFormatada}</p>
+        <h2>{title}</h2>
+        <img src={imageUrl} alt={title} className="moment-card-image" />
+        <p>{description}</p>
+        <div className="interact-container">
+          <div>
+            <button onClick={like}>
+              <i className="fa-solid fa-heart"></i> : {likeNumber}
+            </button>
+          </div>
+          <div>
+            <button>
+              <i className="fa-solid fa-comment"></i>: {comments.length}
+            </button>
+          </div>
+          <div>
+            <i className="fa-solid fa-share"></i>
+          </div>
         </div>
-      </div>
-      <h2>{title}</h2>
-      <img src={imageUrl} alt={title} className="moment-card-image" />
-      <p>{description}</p>
-      <div className="interact-container">
-        <div>
-          <button onClick={like}>
-            <i className="fa-solid fa-heart"></i> : {likeNumber}
-          </button>
-        </div>
-        <div>
-          <button>
-            <i className="fa-solid fa-comment"></i>: {comments.length}
-          </button>
-        </div>
-        <div>
-          <i className="fa-solid fa-share"></i>
-        </div>
-      </div>
 
-      <p>
-        <Link to={`moment/${id}`}>Detalhes</Link>
-      </p>
-    </div>
+        <p>
+          <Link to={`moment/${id}`}>Detalhes</Link>
+        </p>
+      </div>
   );
 }
