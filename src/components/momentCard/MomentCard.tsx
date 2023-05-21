@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { ProfileInfo } from "../../interfaces/IProfileInfo";
 import { addLike, hasLiked, removeLike } from "../../services/like.service";
 import { getProfile } from "../../services/profile.service";
 import "./style.css";
@@ -23,18 +24,9 @@ export default function MomentCard({
   likes: Array<string>;
   comments: [];
 }) {
-  interface ProfileInfo {
-    likes: [];
-    id: number;
-    username: string;
-    profilePicture: string;
-  }
 
   const [profileInfo, setProfileInfo] = useState([] as unknown as ProfileInfo);
   const [likeNumber, setLikeNumber] = useState(likes.length);
-
-  console.log(likes);
-
 
   const data = new Date(date);
 

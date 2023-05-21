@@ -13,6 +13,17 @@ export async function getMomentById(token: string, id: string) {
     return data;
 }
 
+export async function getMomentsByUsername(username: string) {
+    const { data } = await axiosHandler.get(`/all/user/${username}`, {
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        },
+    });
+
+    return data;
+}
+
 export async function createMoment(token: string, request: MomentFornData) {
     const formData = new FormData();
     formData.append('title', request.title);

@@ -1,13 +1,47 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import MomentCard from "../../components/momentCard/MomentCard";
 import { ProfileContext } from "../../context/profile/profile.context";
+import { Moment } from "../../interfaces/IMoment";
 import "./styles.css";
 
 const Profile: React.FC = () => {
   const { profile } = useContext(ProfileContext);
+  const [moments, setMoments] = useState([] as unknown as Moment[]);
+
+  const { token } = JSON.parse(localStorage.getItem("token") || "null");
+
+  const logout = () => {
+    const check = confirm("Deseja realmente sair?");
+    if (check) {
+      localStorage.removeItem("token");
+      window.location.href = "/login";
+    }
+  };
+
+  useEffect(() => {
+      const getMomentsForProfile = async () => {
+        const data = await fetch(`http://localhost:8080/api/v1/moments/all/user/${profile.user.username}`, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          }}).then(res => res.json());
+        setMoments(data);
+      };
+
+      getMomentsForProfile();
+  }, []);
 
   return (
     <div className="profile-container">
       <div className="profile-wrapper">
+        <div className="profile-options-container">
+          <button type="button" onClick={logout}>
+            <div>
+              <i className="fa-solid fa-right-from-bracket"></i>
+              <span>Deslogar</span>
+            </div>
+          </button>
+        </div>
         <div className="profile-header">
           <img
             src={profile?.profilePicture}
@@ -52,6 +86,24 @@ const Profile: React.FC = () => {
               <h3>Aniversário</h3>
               <p>{profile?.birthday}</p>
             </div>
+          </div>
+        </div>
+        <div className="timeline-posts-container">
+          <h2 className="timeline-posts-title">Momentos</h2>
+          <div>
+            {moments?.map((moment) => (
+              <MomentCard
+                key={moment.id}
+                title={moment.title}
+                id={moment.id}
+                description={moment.description}
+                user={moment.username}
+                date={moment.date}
+                imageUrl={moment.imageUrl}
+                likes={moment.likes}
+                comments={moment.comments}
+              />
+            ))}
           </div>
         </div>
       </div>
