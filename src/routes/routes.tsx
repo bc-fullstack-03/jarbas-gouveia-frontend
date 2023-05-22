@@ -5,6 +5,7 @@ import LoginView from "../pages/Login/LoginView";
 import MomentDetailsView from "../pages/MomentDetails/MomentDetailsView";
 import NewMoment from "../pages/NewMoment";
 import Profile from "../pages/Profile";
+import Users from "../pages/Users";
 import ErrorBoundary from "../services/ErrorBoundary";
 
 const router = createBrowserRouter([
@@ -16,11 +17,16 @@ const router = createBrowserRouter([
             { path: "/", element: <FeedView />},
             { path: "/moment/:id", element: <MomentDetailsView /> },
             { path: "/new-moment", element: <NewMoment />},
-            { path: "/profile", element: <Profile />}
+            { path: "/profile", element: <Profile />},
+            { path: "/users", element: <Users />}
         ],
     },
     {
         path: "/login",
+        element: <LoginView />,
+    },
+    {
+        path: "/cadastrar",
         element: <LoginView />,
     }
 ]);

@@ -1,12 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { AxiosResponse } from "axios";
 import { useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/moments.png";
 import profileLogo from "../../assets/profile-thumb.png";
 import { ProfileContext } from "../../context/profile/profile.context";
-import { Profile } from "../../interfaces/IProfile";
-import { ResponseFormat } from "../../interfaces/ResponseFormat";
 import { getProfileByUserId } from "../../services/profile.service";
 import "./style.css";
 
@@ -18,10 +15,9 @@ function Header() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const req = await getProfileByUserId(token.token, token.userId);
-        const resData = req as AxiosResponse<ResponseFormat<Profile>>;
-        if (resData.status === 200) {
-          setContextProfile(resData.data as unknown as Profile);
+        const { data, status } = await getProfileByUserId(token.token, token.userId);
+        if (status === 200) {
+          setContextProfile(data);
         } else {
           navigate("/login");
         }
@@ -77,10 +73,10 @@ function Header() {
               </Link>
             </li>
             <li>
-              <Link to="/">
+              <Link to="/users">
                 <div className="header-button-wrapper">
                   <i className="fa-solid fa-user-group"></i>
-                  <span>Seguidores</span>
+                  <span>Usuários</span>
                 </div>
               </Link>
             </li>

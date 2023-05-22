@@ -1,3 +1,5 @@
+import { Profile } from "../interfaces/IProfile";
+import { ResponseFormat } from "../interfaces/ResponseFormat";
 import axiosHandler from "./axios";
 
 export async function getProfile(token: string, user: string) {
@@ -17,7 +19,7 @@ export async function getProfile(token: string, user: string) {
     }
 }
 
-export async function getProfileByUserId(token: string, userId: string) {
+export async function getProfileByUserId(token: string, userId: string): Promise<ResponseFormat<Profile>> {
 
     try {
         const { data, status } = await axiosHandler.get(`/profile/userId/${userId}`, {
@@ -34,7 +36,10 @@ export async function getProfileByUserId(token: string, userId: string) {
         };
 
     } catch (error) {
-        return error;
+        return {
+            data: {} as Profile,
+            status: 500,
+        }
     }
 }
 

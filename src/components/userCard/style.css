@@ -1,0 +1,81 @@
+.user-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 200px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.user-card-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.user-card-header img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.user-card-header-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.user-card-stats {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.user-card-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-actions-btn-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.user-actions-btn-container button {
+  width: 350px;
+  background-color: #dec129;
+  border: 1px solid #77777759;
+  border-radius: 5px;
+  color: #000000;
+  padding: 0.5em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+
+.user-actions-btn-container button:hover {
+  border: 1px solid #000000a2;
+}
+
+.user-actions-btn-container button:disabled {
+  background-color: #dec02977;
+  border: 1px solid #77777759;
+  color: #000000;
+  cursor: not-allowed;
+}
