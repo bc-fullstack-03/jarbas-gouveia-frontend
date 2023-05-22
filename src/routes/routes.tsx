@@ -5,6 +5,7 @@ import LoginView from "../pages/Login/LoginView";
 import MomentDetailsView from "../pages/MomentDetails/MomentDetailsView";
 import NewMoment from "../pages/NewMoment";
 import Profile from "../pages/Profile";
+import SignUp from "../pages/SignUp";
 import Users from "../pages/Users";
 import ErrorBoundary from "../services/ErrorBoundary";
 
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/cadastrar",
-        element: <LoginView />,
+        element: <SignUp />,
     }
 ]);
 
