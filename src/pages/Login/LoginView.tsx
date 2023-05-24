@@ -15,10 +15,10 @@ const LoginView: React.FC = () => {
 
   const redirect = useNavigate();
 
-  const onSubmit: SubmitHandler<LoginData> = async (data) => {
+  const onSubmit: SubmitHandler<LoginData> = async ({ email, password }: LoginData) => {
     try {
-      const res = await login(data.email, data.password);
-      localStorage.setItem("token", JSON.stringify(res));
+      const { data } = await login(email, password);
+      localStorage.setItem("token", JSON.stringify(data));
       redirect("/");
     } catch (error) {
       console.log(error);
@@ -71,7 +71,7 @@ const LoginView: React.FC = () => {
 
           <div className="register-wrapper">
             <p>Ainda não tem uma conta?</p>
-            <a href="/register">Cadastre-se</a>
+            <a href="/cadastrar">Cadastre-se</a>
           </div>
         </div>
       </div>

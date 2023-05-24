@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import userProfilePic from "../../assets/profile-thumb.png";
-import { Profile } from "../../interfaces/IProfile";
+import { IProfile } from "../../interfaces/IProfile";
 import { IUser } from "../../interfaces/IUser";
 import { getProfileByUserId } from "../../services/profile.service";
 import { follow } from "../../services/user.service";
 import "./style.css";
 
 export default function UserCard(user: IUser) {
-  const [profile, setProfile] = useState<Profile>();
+  const [profile, setProfile] = useState<IProfile>();
   const { token } = JSON.parse(localStorage.getItem("token") || "null");
 
   useEffect(() => {

@@ -30,7 +30,7 @@ const Users: React.FC = () => {
       <div className="users-list-container">
         <ul>
           {
-            users.length ? users.map((user) => <UserCard key={user.id} {...user} />) : <h2 className="user-list-empty">Nenhum usuário disponível encontrado</h2>
+            users?.length ? users?.map((user) => <UserCard key={user.id} {...user} />) : <h2 className="user-list-empty">Nenhum usuário disponível encontrado</h2>
           }
         </ul>
       </div>

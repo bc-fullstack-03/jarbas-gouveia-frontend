@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Profile } from '../../interfaces/IProfile';
+import { IProfile } from '../../interfaces/IProfile';
 import { ProfileContext, ProviderContextType } from './profile.context';
 
 
@@ -8,9 +8,9 @@ interface ProfileProviderProps {
 }
 
 const ProfileProvider: React.FC<ProfileProviderProps> = ({ children }) => {
-  const [profile, setProfile] = useState<Profile>({} as Profile);
+  const [profile, setProfile] = useState<IProfile>({} as IProfile);
 
-  const setContextProfile = (newProfile: Profile) => {
+  const setContextProfile = (newProfile: IProfile) => {
     setProfile(newProfile);
   };
 

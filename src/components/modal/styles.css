@@ -1,0 +1,142 @@
+.update-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.update-form-photo-preview-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.update-form-container input,
+textarea {
+  width: 100%;
+  padding: 0.6em;
+  color: #ffffff;
+  font-size: 0.8em;
+}
+
+.thumb-photo-preview {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background-color: #dcdfb3;
+  border: 1px solid #3a3a3a;
+}
+
+.form-inputs-container {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.update-form-input-wrapper label {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.update-form-input-wrapper-double {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.update-form-input-wrapper-double label {
+  width: 48%;
+  text-align: center;
+}
+
+@media (max-width: 920px) {
+  .update-form-input-wrapper-double {
+    flex-direction: column;
+  }
+
+  .update-form-input-wrapper-double label {
+    width: 100%;
+  }
+
+  .update-form-photo-preview-container {
+    width: 100%;
+  }
+
+  .update-form-container input,
+  textarea {
+    width: 100%;
+  }
+
+  .update-form-container {
+    width: 100%;
+  }
+
+  .form-inputs-container {
+    width: 100%;
+  }
+
+  .update-form-input-wrapper-double {
+    flex-direction: column;
+  }
+
+  .update-form-input-wrapper-double label {
+    width: 100%;
+  }
+}
+
+@media (max-width: 397px) {
+  .update-form-container input,
+  textarea {
+    font-size: 1em;
+  }
+
+  .update-form-input-wrapper label {
+    width: 100%;
+  }
+
+  .update-form-input-wrapper-double label {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+
+    width: 100%;
+  }
+
+  .update-form-input-wrapper-double {
+    flex-direction: column;
+  }
+
+  .update-form-input-wrapper-double label {
+    width: 100%;
+  }
+
+  .update-form-photo-preview-container {
+    width: 70%;
+  }
+
+  .update-form-container input,
+  textarea {
+    width: 67%;
+  }
+
+  .update-form-container {
+    width: 300px;
+  }
+
+  .update-form-input-wrapper-double {
+    flex-direction: column;
+  }
+
+  .save-btn-update-profile {
+    width: 66%;
+  }
+
+  .close-btn-update-profile {
+    margin-top: 1rem;
+    width: 66%;
+  }
+}

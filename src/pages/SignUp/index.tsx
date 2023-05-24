@@ -1,5 +1,6 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { login } from "../../services/authentication.service";
 import { signup } from "../../services/signup.service";
 import { ISignUp } from "../../types/ISignUp";
 
@@ -14,12 +15,18 @@ const SignUp: React.FC = () => {
 
       const redirect = useNavigate();
 
-      const onSubmit: SubmitHandler<ISignUp> = async (data: ISignUp) => {
+      const onSubmit: SubmitHandler<ISignUp> = async ({ username, email, password }: ISignUp) => {
         try {
-          const { status } = await signup(data.username, data.email, data.password);
+          const { status } = await signup(username, email, password);
             if (status === 201) {
                 alert("Conta criada com sucesso!");
-                redirect("/");
+                const { data, status } = await login(email, password);
+
+                if(status === 200) {
+                    localStorage.setItem("token", JSON.stringify(data));
+                    redirect("/create-profile");
+                }
+
             } else {
                 alert("Erro ao criar conta!");
             }

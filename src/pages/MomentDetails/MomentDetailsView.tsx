@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Moment } from "../../interfaces/IMoment";
-import { Profile } from "../../interfaces/IProfile";
+import { IProfile } from "../../interfaces/IProfile";
 import { getMomentById } from "../../services/moment.service";
 import { getProfileByUserId } from "../../services/profile.service";
 import "./style.css";
@@ -10,7 +10,7 @@ import "./style.css";
 
 export default function MomentDetailsView() {
   const [moment, setMoment] = useState({} as Moment);
-  const [profileInfo, setProfileInfo] = useState({} as Profile);
+  const [profileInfo, setProfileInfo] = useState({} as IProfile);
 
   const { id } = useParams();
   const { token, userId } = JSON.parse(localStorage.getItem("token") || "");
@@ -23,11 +23,16 @@ export default function MomentDetailsView() {
   }, [id, token]);
 
   useEffect(() => {
-    const userDetails = async () => getProfileByUserId(token, userId);
+    try {
+      const t = async () => getProfileByUserId(token, userId!);
+      t().then((res) => {
+        setProfileInfo(res);
+      });
+    } catch (error) {
+      console.log(error);
+    }
 
-    userDetails().then((res) => {
-      setProfileInfo(res);
-    });
+
   }, [token, userId]);
 
   return (

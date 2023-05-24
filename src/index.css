@@ -58,7 +58,7 @@ span {
   margin: 0;
   font-family: "Source Sans Pro", sans-serif;
   box-sizing: border-box;
-  color: #444;
+  color: #000000;
 }
 
 a {
@@ -100,7 +100,7 @@ form [placeholder] {
 button,
 .form-group textarea {
   padding: 0.6em;
-  color: #bfbfbf;
+  color: #ffffff;
   font-size: 0.8em;
 }
 

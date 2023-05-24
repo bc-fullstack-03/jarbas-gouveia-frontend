@@ -1,6 +1,6 @@
 import { IUser } from "./IUser";
 
-export interface Profile {
+export interface IProfile {
     id: string;
     userId: string;
     user: IUser;

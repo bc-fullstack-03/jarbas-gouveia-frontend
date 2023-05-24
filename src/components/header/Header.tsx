@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/moments.png";
@@ -19,7 +18,7 @@ function Header() {
         if (status === 200) {
           setContextProfile(data);
         } else {
-          navigate("/login");
+          // navigate("/login");
         }
       } catch (error) {
         console.log("Error fetching profile:", error);

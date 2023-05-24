@@ -1,12 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
+import CustomModal from "../../components/modal";
 import MomentCard from "../../components/momentCard/MomentCard";
 import { ProfileContext } from "../../context/profile/profile.context";
 import { Moment } from "../../interfaces/IMoment";
+import { IUpdateProfile } from "../../interfaces/IUpdateProfile";
 import "./styles.css";
 
 const Profile: React.FC = () => {
   const { profile } = useContext(ProfileContext);
+
   const [moments, setMoments] = useState([] as unknown as Moment[]);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const { token } = JSON.parse(localStorage.getItem("token") || "null");
 
@@ -18,23 +22,41 @@ const Profile: React.FC = () => {
     }
   };
 
-  useEffect(() => {
-      const getMomentsForProfile = async () => {
-        const data = await fetch(`http://localhost:8080/api/v1/moments/all/user/${profile.user.username}`, {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json',
-          }}).then(res => res.json());
-        setMoments(data);
-      };
+  const handleOpenModal = () => {
+    setModalIsOpen(true);
+  };
 
-      getMomentsForProfile();
-  }, []);
+  const handleCloseModal = () => {
+    setModalIsOpen(false);
+  };
+
+  useEffect(() => {
+
+        const getMomentsForProfile = async () => {
+          const data = await fetch(`http://localhost:8080/api/v1/moments/all/user/${profile.username}`, {
+            headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json',
+            }}).then(res => res.json());
+          setMoments(data);
+        };
+        getMomentsForProfile();
+
+
+  }, [profile.username]);
+
+
 
   return (
     <div className="profile-container">
       <div className="profile-wrapper">
         <div className="profile-options-container">
+          <button type="button" onClick={handleOpenModal}>
+            <div>
+              <i className="fa-solid fa-right-from-bracket"></i>
+              <span>Editar</span>
+            </div>
+          </button>
           <button type="button" onClick={logout}>
             <div>
               <i className="fa-solid fa-right-from-bracket"></i>
@@ -42,6 +64,8 @@ const Profile: React.FC = () => {
             </div>
           </button>
         </div>
+        <CustomModal isOpen={modalIsOpen} onClose={handleCloseModal} initialData={profile as unknown as IUpdateProfile} />
+
         <div className="profile-header">
           <img
             src={profile?.profilePicture}

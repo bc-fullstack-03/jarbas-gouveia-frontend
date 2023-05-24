@@ -37,7 +37,7 @@ export default function FeedView() {
         <div className="feed-container">
           <div className="moments-container">
             <ul>
-              {feed.length ? (
+              {feed?.length ? (
                 feed.map(
                   ({
                     id,

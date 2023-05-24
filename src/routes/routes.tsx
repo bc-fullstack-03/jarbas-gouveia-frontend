@@ -29,6 +29,10 @@ const router = createBrowserRouter([
     {
         path: "/cadastrar",
         element: <SignUp />,
+    },
+    {
+        path: "/create-profile",
+        element: <SignUp />,
     }
 ]);
 
