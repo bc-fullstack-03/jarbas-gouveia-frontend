@@ -5,13 +5,12 @@ import { IUpdateProfile } from "../../interfaces/IUpdateProfile";
 import { updateProfile } from "../../services/profile.service";
 import "./styles.css";
 
-// Configuração do ReactModal para acessibilidade
 Modal.setAppElement("#root");
 
 interface Props {
   isOpen: boolean;
   onClose: () => void;
-  initialData: IUpdateProfile; // Dados iniciais do perfil
+  initialData: IUpdateProfile;
 }
 
 const EditProfileModal: React.FC<Props> = ({
@@ -25,7 +24,7 @@ const EditProfileModal: React.FC<Props> = ({
     formState: { errors },
     setValue,
   } = useForm<IUpdateProfile>({
-    defaultValues: initialData, // Define os valores iniciais do formulário
+    defaultValues: initialData,
   });
   const [profilePicturePreview, setProfilePicturePreview] = useState<
     string | null
@@ -59,9 +58,10 @@ const EditProfileModal: React.FC<Props> = ({
   };
 
   const handleSubmitForm = (data: IUpdateProfile) => {
-    const { image, ...profileData } = data; // Separar a imagem dos outros dados do perfil
-    onSubmit({ ...profileData, image: image || initialData.image }); // Enviar a imagem ou usar a imagem existente se não for selecionada uma nova
+    const { image, ...profileData } = data;
+    onSubmit({ ...profileData, image: image || initialData.image });
     onClose();
+    location.reload();
   };
 
   const customStyles = {
@@ -119,23 +119,25 @@ const EditProfileModal: React.FC<Props> = ({
             <div className="update-form-input-wrapper">
               <label>
                 Bio:
-                <textarea {...register("bio")} />
+                <textarea {...register("bio", { required: "Campo obrigatório" })} />
               </label>
             </div>
             <div className="update-form-input-wrapper-double">
               <label>
                 Localização:
-                <input type="text" {...register("location")} />
+                <input type="text" {...register("location", { required: "Campo obrigatório" })} />
               </label>
               <label>
                 Aniversário:
-                <input type="text" {...register("birthday")} />
+                <input type="text" {...register("birthday", {
+                  required: "Campo obrigatório",
+                })} />
               </label>
             </div>
             <div className="update-form-input-wrapper">
               <label>
                 Website:
-                <input type="text" {...register("website")} />
+                <input type="text" {...register("website", { required: "Campo obrigatório" })} />
               </label>
             </div>
 

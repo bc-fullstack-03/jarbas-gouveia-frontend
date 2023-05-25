@@ -17,8 +17,10 @@ function Header() {
         const { data, status } = await getProfileByUserId(token.token, token.userId);
         if (status === 200) {
           setContextProfile(data);
-        } else {
-          // navigate("/login");
+        }
+
+        if(status === 500){
+          navigate("/login");
         }
       } catch (error) {
         console.log("Error fetching profile:", error);

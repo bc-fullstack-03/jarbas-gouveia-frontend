@@ -1,0 +1,72 @@
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background: white;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  height: 600px;
+  overflow-y: visible;
+}
+
+.modal-comment-input {
+  width: 360px;
+  height: 80px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+  resize: none;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease;
+}
+
+.modal-enter {
+  opacity: 0;
+  transform: translate(-50%, -60%);
+}
+
+.modal-enter-active {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+.modal-exit {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+.modal-exit-active {
+  opacity: 0;
+  transform: translate(-50%, -40%);
+}
+
+.modal-comment-container {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  margin-top: 1rem;
+  height: 400px;
+}
+
+.modal-comment-container li {
+  list-style: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+}

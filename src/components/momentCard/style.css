@@ -75,6 +75,7 @@
   font-size: 0.9em;
   font-weight: 400;
   padding-right: 0.8em;
+  color: #dec129;
 }
 
 .card-moment-header-wrapper p {
@@ -85,6 +86,7 @@
   margin-bottom: 0.5em;
   font-size: 0.9em;
   font-weight: 400;
+  color: #dec129;
 }
 
 .moment-card-image {

@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import profileThumb from "../../assets/profile-thumb.png";
 import { ProfileInfo } from "../../interfaces/IProfileInfo";
 import { addLike, hasLiked, removeLike } from "../../services/like.service";
 import { getProfile } from "../../services/profile.service";
+import CommentModal from "../commentModal";
 import "./style.css";
 
 export default function MomentCard({
@@ -22,10 +24,12 @@ export default function MomentCard({
   date: string;
   imageUrl: string;
   likes: Array<string>;
-  comments: [];
+  comments: Array<object>;
 }) {
   const [profileInfo, setProfileInfo] = useState([] as unknown as ProfileInfo);
   const [likeNumber, setLikeNumber] = useState(likes.length);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
 
   const data = new Date(date);
 
@@ -58,11 +62,19 @@ export default function MomentCard({
     }
   };
 
+  const handleOpenModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalIsOpen(false);
+  };
+
   return (
       <div className="moment">
         <div className="card-moment-header-container">
           <div className="card-moment-header-wrapper">
-            <img src={profileInfo.profilePicture} alt={profileInfo.username} />
+            <img src={profileInfo.profilePicture || profileThumb} alt={profileInfo.username} />
             <p>{user}</p>
           </div>
           <div className="card-moment-header-wrapper-text">
@@ -79,13 +91,14 @@ export default function MomentCard({
             </button>
           </div>
           <div>
-            <button>
+            <button onClick={handleOpenModal}>
               <i className="fa-solid fa-comment"></i>: {comments.length}
             </button>
           </div>
           <div>
             <i className="fa-solid fa-share"></i>
           </div>
+          <CommentModal isOpen={modalIsOpen} onClose={handleCloseModal} comentList={comments} momentId={id} />
         </div>
 
         <p>
