@@ -5,7 +5,8 @@
 #### Ainda há uma infinidade espaço para melhorias, mas o projeto já está funcional e pronto para ser utilizado. Está sendo entregue há nivel de versão 0.0.1 e será incrementado com o tempo.
 
 ## Tecnologias utilizadas
- * React
+ * React + Vite
+ * Typescript
  * Modal
  * React Hook Form
  * Axios
